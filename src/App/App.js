@@ -1,4 +1,4 @@
 import React from 'react';
-import StyleExample from '../StyleExample';
+import TodoList from '../TodoList';
 
-export default () => <StyleExample />;
+export default () => <TodoList />;
