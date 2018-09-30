@@ -1,3 +1,5 @@
-import App from './App';
+import app from './App';
+import routes from './Routes';
 
-export default App;
+export const App = app;
+export const Routes = routes;

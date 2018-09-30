@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import {
-  View,
   SafeAreaView,
-  Text,
   FlatList,
 } from 'react-native';
+import PropTypes from 'prop-types';
+
 import styles from './styles';
 import TodoRow from './TodoRow';
 import Separator from './Separator';
@@ -17,7 +17,7 @@ const TODOS = [
   },
   {
     title: 'Go pickup laundry',
-    description: "Before 18:00hs",
+    description: 'Before 18:00hs',
     done: true,
   },
   {
@@ -28,12 +28,16 @@ const TODOS = [
 ];
 
 class TodoList extends Component {
-  renderItem = ({ item }) => <TodoRow todo={item} />;
+  static navigationOptions = {
+    title: 'To Do List',
+    headerTintColor: 'black',
+  };
+
+  renderItem = ({ item }) => <TodoRow todo={item} navigation={this.props.navigation} />;
 
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <Text style={styles.title}> TODO List </Text>
         <FlatList
           data={TODOS}
           renderItem={this.renderItem}
@@ -43,5 +47,9 @@ class TodoList extends Component {
     );
   }
 }
+
+TodoList.propTypes = {
+  navigation: PropTypes.object.isRequired,
+};
 
 export default TodoList;
